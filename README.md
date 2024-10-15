@@ -18,3 +18,4 @@
 - **Database**: SQLite
 - **Frontend**: HTML, CSS, JavaScript
 - **Dependencies**: Refer to the `requirements.txt` file for all necessary packages.
+- Use 'pip install -r requirements.txt' to install dependencies
