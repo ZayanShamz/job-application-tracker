@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{ job[3] }}@{{ job[2] }}</title>
+{% endblock%}
+
+
+{% block body %}
+<div class="blur-body">
+    <div class="body-container">
+        <div class="inner-container">
+            <div class="inner-item">
+                <div class="inner-icons">
+                    <a href="/edit/{{ job[0] }}" class="edit-btn" title="Edit this application">
+                        <i class="fa-regular fa-pen-to-square"></i></a>
+                    <a href="/home" class="remove-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i></a>
+                </div>
+
+                <div class="item-content">
+
+                    <p><b>Date:</b> {{ job[9][8:10]}}{{ job[9][4:8] }}{{ job[9][0:4]}}</p>
+                    
+                    <p><b>Company:</b> {{ job[2] }}</p>
+
+                    <p><b>Position:</b> {{ job[3] }}</p>
+
+                    <p><b>Job Discription:</b> {{ job[4] }} </p>
+               
+                    <p><b>Requirements:</b> {{ job[5] }}</p>
+
+                    <p><b>Status:</b> {{ job[6] }}</p>
+
+                    <p><b>Follow up:</b> {{ job[7] }}</p>
+
+                    <p><b>Platform:</b> {{ job[8] }}</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

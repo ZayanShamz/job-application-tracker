@@ -1,0 +1,600 @@
+*{
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+
+     /* Color Variables */
+     --primary-color: #225442;
+     --primary-hover-color: #0B3835;
+     --secondary-color: #4F9368;
+     --white-color: #ffffff;
+     --shadow-color: hsla(172, 36%, 25%, 0.297);
+     --shadow-hover-color: hsla(172, 36%, 25%, 0.676);
+     --input-shadow: hsla(0, 0%, 0%, 0.239);
+     --dropdown-bg: hsla(176, 67%, 13%, 0.257);
+     --blur-bg: hsla(158, 42%, 23%, 0.050);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    background: url('../images/Green-firewatch.jpeg') no-repeat center/cover ;
+    background-attachment: fixed;
+    padding-top: 60px;
+}
+
+.content{
+    width:100%;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* ----------- Login/Register ----------------- */
+.form-container {
+    min-width: 400px;
+    color: var(--white-color);
+    border-radius: 10px;
+    padding: 30px 40px;
+    background: hsla(0, 0%, 0%, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 5px var(--shadow-color);
+    border: 1px solid var(--shadow-color);
+    transition: box-shadow 0.3s linear;
+}
+
+.form-container:hover, .form-container:focus{
+    box-shadow: 0 0 15px var(--shadow-hover-color);
+}
+
+.form-container h1{
+    font-size: 2.5rem;
+    text-align: center;
+    cursor: default;
+}
+
+.form-container .input-form {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 30px 0;
+    
+}
+
+.input-form input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 1px solid;
+    border-radius: 20px;
+    outline: none;
+    color: var(--white-color);
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    transition: box-shadow 0.3s linear, border-color 0.3s linear;
+}
+
+.input-form input::placeholder{
+    color: var(--white-color);
+}
+
+.input-form input:focus, .input-form input:hover{
+    border-color: transparent;
+    box-shadow: 0 0 10px var(--input-shadow);
+}
+
+.input-form i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    font-size: 20px;
+    color: var(--white-color);
+}
+
+/* Button styles */
+.form-container .btn{
+    width: 100%;
+    height: 40px;
+    background: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s ease, scale 0.3s;
+}
+
+.form-container .btn:hover, .form-container .btn:focus {
+    background: var(--primary-hover-color);
+    scale: 1.02;
+}
+
+.form-container .reg-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px;
+}
+
+.reg-link p a{
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: text-decoration 0.5s ease;
+}
+
+.reg-link p a:hover, .reg-link p a:focus{
+    text-decoration: underline;
+}
+
+
+/* ------------- NavBar ------------------- */
+header { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+.navbar {
+    background: #bfde8c;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    padding: 0 2rem 0 2rem ;
+}
+
+.navbar .logo a{
+    color: var(--white-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar .logo a:hover{
+    color: var(--primary-hover-color);
+}
+
+.navbar .nav-items {
+    display: flex;
+    gap: 2rem;
+}
+
+header li{
+    list-style: none;
+}
+
+header li a{
+    color: var(--white-color);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+header li a:hover{
+    color: var(--primary-hover-color);
+}
+
+.nav-btn{
+    background-color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: 700;
+    transition: scale 0.3s, color 0.5s;
+}
+
+.nav-btn:hover, .nav-btn:focus {
+    scale: 1.1;
+    color: var(--primary-hover-color);
+}
+
+.navbar .toggle-btn {
+    display: none;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    background: var(--dropdown-bg);
+    backdrop-filter: blur(15px) !important;
+    width: 250px;
+    height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown-menu.show {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+} 
+
+.dropdown-menu li{
+    padding: 20px;
+    text-align: center;
+}
+
+.dropdown-menu li:hover{
+    color: var(--primary-hover-color);
+}
+
+.dropdown-menu .nav-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ----------- body background ------------------ */
+.blur-body {
+    min-height: calc(100vh - 60px);
+    min-width: 100%;
+    background:var(--blur-bg);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+}
+
+.body-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    width: 100%;
+    padding-top: 20px;
+}
+
+
+.body-container input{
+    background: transparent;
+    color: var(--primary-hover-color);
+    border: 1px solid ;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 10px;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: border-color 300ms ease-in;
+}
+
+.body-container input::placeholder{
+    color: var(--primary-hover-color);
+    transition: color 300ms ease-in;
+}
+
+.body-container input:hover, 
+.body-container input:focus{
+    border-color: var(--white-color);
+   
+}
+.body-container input:hover::placeholder,
+.body-container input:focus::placeholder {
+    color: var(--white-color);
+}
+
+.body-container .submit-button{
+    background: transparent;
+    color: var(--primary-hover-color);
+    border: 1px solid ;
+    border-radius: 10px;
+    margin: 0 10px 0 10px;
+    padding: 10px;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 300ms;
+}
+
+.body-container .submit-button:hover, .body-container .submit-button:focus{
+    color: var(--white-color);
+}
+
+
+.inner-container {
+    min-width: 60%;
+    max-height: calc(100vh - 60px); 
+    margin-top: 20px;
+    margin-bottom: 60px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    background: var(--dropdown-bg);
+    border: 1px solid var(--primary-hover-color); 
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--input-shadow); 
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.inner-container:hover{
+    box-shadow: 0 0 10px var(--shadow-hover-color);
+}
+
+.inner-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--dropdown-bg);
+    border-radius: 5px;
+    color: var(--white-color);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.inner-item .inner-icons{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.inner-icons i{
+    font-size: 1rem;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: scale 300ms ease-in-out, color 300ms ease-in;
+}
+
+.remove-btn:hover i,
+.edit-btn:hover i{
+    scale: 1.3;
+    color: var(--primary-hover-color);
+}
+
+
+.item-content {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: start; 
+    align-items: start; 
+    text-align: justify;
+    padding: 10px;
+    width: 100%;
+}
+
+/* ---Table-------- */
+
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto; 
+}
+
+table {
+    min-width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Ensures even column width distribution */
+}
+
+tbody tr:nth-child(odd) {
+    background: transparent;
+}
+
+tbody tr:nth-child(even) {
+    background: hsla(0, 0%, 0%, 0.1); /* Slightly darker background for even rows */
+}
+
+
+tbody tr:hover {
+    background: hsla(0, 0%, 0%, 0.34); 
+    cursor: pointer; 
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: none;
+}
+
+th {
+    color: var(--white-color);
+    background-color:var(--primary-hover-color);
+    font-weight: bold;
+    position: sticky; 
+    top: 0;
+    cursor: pointer;
+}
+
+td {
+    color: var(--white-color);
+    word-wrap: break-word;
+}
+
+/* --------------- Modal ------------------ */
+/* The Modal (background) */
+.add-modal {
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    min-width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background: transparent; 
+    backdrop-filter: blur(30px);
+  }
+  
+  /* Modal Content/Box */
+  .add-modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:var(--dropdown-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    margin: 15% auto; 
+    padding: 20px;
+    width: 60%; 
+    position: relative;
+  }
+
+  .add-modal-content h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--white-color);
+  }
+
+  .modal-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+
+  .modal-input{
+    width: 100%;
+  }
+
+  .modal-input input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--shadow-hover-color); 
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--white-color);
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-input input::placeholder{
+    color: hsla(0, 0%, 100%, 0.555);
+}
+.modal-input input:focus::placeholder{
+    color: var(--shadow-hover-color);
+}
+
+
+.modal-input input:hover{
+    box-shadow: 0 0 10px var(--input-shadow);
+}
+
+.modal-input input:focus {
+    border: 1px solid var(--primary-hover-color); 
+}
+
+.modal-input textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--shadow-hover-color); 
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--white-color);
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    resize: none; 
+    overflow: auto; 
+    min-height: 40px; 
+    max-height: 200px;
+    line-height: 1.5;
+}
+
+.modal-input textarea::placeholder {
+    color:  hsla(0, 0%, 100%, 0.555);
+}
+
+.modal-input textarea:hover {
+    box-shadow: 0 0 10px var(--input-shadow);
+}
+
+.modal-input textarea:focus {
+    border: 1px solid var(--primary-hover-color); 
+}
+
+.modal-input textarea:focus::placeholder {
+    color: var(--shadow-hover-color);
+}
+
+.close-modal {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 2rem;
+    color: var(--primary-hover-color);
+    cursor: pointer;
+    transition: scale 300ms ease-in-out, color 300ms ease-in;
+}
+
+.close-modal:hover {
+    scale: 1.3;
+    color:var(--white-color);
+}
+
+.modal-form .btn{
+    background: var(--white-color);
+    color: var(--primary-hover-color);
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    min-width: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s ease, scale 0.3s;
+}
+
+.modal-form .btn:hover, .modal-form .btn:focus {
+    background: var(--secondary-color);
+    color: var(--white-color);
+    scale: 1.3;
+}
+
+/* Responsive */
+
+@media(max-width:967px) {
+    .navbar .nav-btn, .navbar .nav-items{
+        display: none;
+    }
+    .navbar .toggle-btn, .dropdown-menu{
+        display: block;
+    }
+    .inner-container{
+        width: 90%;
+    }
+}
+
+@media(max-width:526px) {
+    .dropdown-menu{
+        left: 2rem;
+        width: unset;
+    }
+}
