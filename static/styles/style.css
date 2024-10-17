@@ -96,6 +96,22 @@ body {
     color: var(--white-color);
 }
 
+#username-status {
+    display: block;
+    margin-left: 20px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: var(--status-color); 
+}
+
+.username-taken {
+    color: red !important;
+}
+
+.username-available {
+    color: green !important;
+}
+
 /* Button styles */
 .form-container .btn{
     width: 100%;

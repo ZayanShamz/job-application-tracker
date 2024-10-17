@@ -14,7 +14,9 @@
         <form method="post" class="form" action="{{ url_for('register') }}">
             <h1>Register</h1>
             <div class="input-form">
+                <input type="hidden" id="usernames" name="usernames" value="{{usernames}}"/>
                 <input type="text" id="username" name="username" placeholder="Enter your name" required/>
+                <span id="username-status"></span>
             </div>
             <div class="input-form">
                 <input type="text" id="email" name="email" placeholder="Enter your email" required/>
@@ -31,9 +33,33 @@
                 <p>Already have an account?<a href="/"> Sign in.</a></p>
             </div>  
         </form>
+        
     </div>
 
     <script>
+        // username check
+        const usernamesId = document.getElementById('usernames');
+        const usernames = usernamesId.value
+        console.log(usernames)
+        const usernameInput = document.getElementById('username');
+        const statusText = document.getElementById('username-status');
+
+        usernameInput.addEventListener('input', function() {
+            const inputValue = usernameInput.value.trim();
+            
+            if (usernames.includes(inputValue)) {
+                statusText.textContent = "Username unavailable";
+                statusText.classList.remove('username-available');
+                statusText.classList.add('username-taken');
+            } else {
+                statusText.textContent = "Username available";
+                statusText.classList.remove('username-taken');
+                statusText.classList.add('username-available');
+            }
+        });
+
+
+
         // Toggle password visibility
         const passwordInput = document.getElementById('password');
         const togglePassword = document.getElementById('togglePassword');

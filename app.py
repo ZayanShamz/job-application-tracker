@@ -32,6 +32,11 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT username FROM login')
+    usernames = [row[0] for row in cursor.fetchall()]
+    print(usernames)
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
@@ -41,9 +46,9 @@ def register():
         cursor.execute('INSERT INTO login (username, email, password) VALUES (?, ?, ?)', (username, email, password))
         conn.commit()
         conn.close()
-        return "<script>alert('Registration Succesful');window.location='/'</script>"
+        return redirect(url_for('login'))
     
-    return render_template('register.html')
+    return render_template('register.html', usernames=usernames)
 
 @app.route('/home', methods=['GET', 'POST'])
 def home():
@@ -134,4 +139,4 @@ def logout():
 
 if __name__ == '__main__':
     init_db()  
-    app.run(debug=False)
+    app.run(debug=True)
